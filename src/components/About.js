@@ -1,32 +1,20 @@
-import React , {useState} from 'react'
+import React  from 'react'
 
-const About = () => {
-    const [myStyle, setMyStyle] = useState({
-        color: "black",
-        backgroundColor: "white"
+const About = (props) => {
+    
+    let myStyle = {
+      color: props.mode === "dark" ? "white" : "#042743",
+      backgroundColor: props.mode === "dark" ? "rgb(36,74,104)" : "white",
+    };
 
-    })
-    const [btnText, setBtnText] = useState("Enable dark mode")
-
-    const toggleMode = () => {
-        if(myStyle.color === "white"){
-            setMyStyle({
-                color: "black",
-                backgroundColor: "white"
-            })
-            setBtnText("Enable dark mode")
-        }else{
-            setMyStyle({
-              color: "white",
-              backgroundColor: "black",
-              border: "1px solid white"
-            });
-            setBtnText("Enable light mode");
-        }
-    }
   return (
-    <div className="container" style={myStyle}>
-      <h1 className="my-3">About Us</h1>
+    <div className="container">
+      <h1
+        className="my-3"
+        style={{ color: props.mode === "dark" ? "white" : "#042743" }}
+      >
+        About Us
+      </h1>
       <div className="accordion" id="accordionExample">
         <div className="accordion-item">
           <h2 className="accordion-header">
@@ -120,15 +108,6 @@ const About = () => {
               though the transition does limit overflow.
             </div>
           </div>
-        </div>
-        <div className="container my-3">
-          <button
-            type="button"
-            className="btn btn-primary my-3"
-            onClick={toggleMode}
-          >
-            {btnText}
-          </button>
         </div>
       </div>
     </div>
